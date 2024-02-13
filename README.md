@@ -56,21 +56,21 @@ Putting this together, we get that <br>
 $T(n) = 1$, when $n <= 1$<br>
 $T(n) = 3T(n/3) + n^5$, otherwise<br>
 
-We can now solve for $O(n)$ by substitution.
+We can now solve for $\Theta(n)$ by substitution for a general idea of $O(n)$.
 
 $T(n) = 3T(n/3) + n^5$<br>
-$= 3(3T(n/9) + n^5/3) + n^5$<br>
-$= 9T(n/9) + 2n^5$<br>
-$= 9(3T(n/27) + n^5/9) + 2n^5$<br>
-$= 27T(n/27) + 3n^5$<br>
+$= 3(3T(n/9) + (n/3)^5) + n^5$<br>
+$= 9T(n/9) + n^5 + 3(n/3)^5$<br>
+$= 9(3T(n/27) + n^5/9) + n^5 + n^5/3^4$<br>
+$= 27T(n/27) + n^5 + n^5/3^4 + n^5/9^4$<br>
 $= ...$<br>
-$= 3^iT(n/3^i) + in^5$<br>
+$= 3^iT(n/3^i) + n^5 + n^5/3^4 + n^5/9^4 + ... + n^5/3^{4(i-1)}$<br>
 
 Suppose $i = log{_3}{n}$. Then we can say, using the base case, that<br>
 
-$T(n) = 3^iT(n/3^i) + in^5$<br>
-$= nT(1) + n^5log{_3}{n}$<br>
-$= n + n^5log{_3}{n} \in O(n^5log(n))$<br>
+$T(n) = 3^iT(n/3^i) + n^5 + n^5/3^4 + n^5/9^4 + ... + n^5/3^{4(i-1)}$<br>
+$= nT(1) + n^5 + n^5/3^4 + n^5/9^4 + ... + n^5/3^{4(log{_3}{n}-1)}$<br>
+$= n + n^5 + n^5/3^4 + n^5/9^4 + ... + n^5/3^{4log{_3}{n}-4}$<br>
 
-With $n^5log(n)$ being the biggest growth rate in the final solution, we can say that this
-algorithm fits in $O(n^5log(n))$.
+With $n^5$ being the biggest growth rate in the final solution, we can say that this
+algorithm fits in $O(n^5)$.
