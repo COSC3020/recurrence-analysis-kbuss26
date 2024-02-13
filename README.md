@@ -72,5 +72,7 @@ $T(n) = 3^iT(n/3^i) + n^5 + n^5/3^4 + n^5/9^4 + ... + n^5/3^{4(i-1)}$<br>
 $= nT(1) + n^5 + n^5/3^4 + n^5/9^4 + ... + n^5/3^{4(log{_3}{n}-1)}$<br>
 $= n + n^5 + n^5/3^4 + n^5/9^4 + ... + n^5/3^{4log{_3}{n}-4}$<br>
 
-With $n^5$ being the biggest growth rate in the final solution, we can say that this
-algorithm fits in $O(n^5)$.
+n^5 is the biggest growth rate in this relation. This relation is the worst case for 
+T(n) since there does not exist any other conditions that may extend the code -- 
+the code either returns or goes through the recurrence relation. 
+Therefore, the O bound for the T(n) is $O(n^5)$.
